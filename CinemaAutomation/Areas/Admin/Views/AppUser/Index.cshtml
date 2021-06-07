@@ -1,0 +1,60 @@
+﻿
+@model List<AppUser>
+@{
+    ViewData["Title"] = "Yönetim Paneli";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        @ViewData["Title"]
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Kullanıcı Adı</th>
+                        <th>Adı</th>
+                        <th>Soyadı</th>
+                        <th>Email</th>
+                        <th>Rolleri</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Kullanıcı Adı</th>
+                        <th>Adı</th>
+                        <th>Soyadı</th>
+                        <th>Email</th>
+                        <th>Rolleri</th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.UserName</td>
+                            <td>@user.FirstName</td>
+                            <td>@user.LastName</td>
+                            <td>@user.Email</td>
+                            <th>Test Aşamasında</th>
+                            <td class="text-right">
+                                <a class="btn btn-primary" asp-controller="AppUser" asp-action="AdminRole" asp-area="Admin" asp-route-id="@user.Id">Admin</a>
+                                <a class="btn btn-warning" asp-controller="Account" asp-action="Edit" asp-area="User" asp-route-id="@user.Id">Güncelle</a>
+                                <a class="btn btn-danger" asp-action="Delete" asp-controller="Account" asp-area="User" asp-route-id="@user.Id">Sil</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

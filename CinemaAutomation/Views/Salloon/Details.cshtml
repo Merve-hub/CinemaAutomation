@@ -1,0 +1,41 @@
+﻿@model SalloonSeatVM
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+        
+
+<div class="card-header"  >
+    <div class="row">
+        <div class="col">
+             <h2>@Model.Salloon.SalloonName</h2>
+
+        </div>
+        <div class="col-md-4">
+
+            <h2>@Model.Salloon.Capacity</h2>
+
+
+        </div>
+         
+
+
+    </div>
+    <div class="card-body">
+
+
+        <ul>
+            @foreach (var seat in Model.Seats)
+            {
+                <li>@seat.SeatNo</li>
+
+            }
+
+        </ul>
+
+    </div>
+
+
+
+</div>
+
